@@ -1,0 +1,37 @@
+{
+  "name": "electron-laravel",
+  "version": "1.0.0",
+  "description": "Laravel desktop application using Electron JS",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "serve": "concurrently \"npm run server\" \"npm start\"",
+    "server": "cd www && php artisan serve --host=127.0.0.1 --port=8000",
+    "install:all": "npm install && cd www && composer install",
+    "install:composer": "cd www && composer install",
+    "update:composer": "cd www && composer update",
+    "install:dev": "npm install && cd www && composer install --dev",
+    "install:prod": "npm ci --only=production && cd www && composer install --no-dev --optimize-autoloader",
+    "install:production": "npm ci --only=production && cd www && composer install --no-dev --optimize-autoloader --no-interaction",
+    "build:prod": "npm run install:production && cd www && php artisan config:cache && php artisan route:cache && php artisan view:cache",
+    "postinstall": "cd www && composer install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevShaded/electron-laravel.git"
+  },
+  "author": "Fredrik Sundquist",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DevShaded/electron-laravel/issues"
+  },
+  "homepage": "https://github.com/DevShaded/electron-laravel#readme",
+  "devDependencies": {
+    "concurrently": "^9.2.0",
+    "electron": "^10.1.5",
+    "electron-packager": "^15.1.0"
+  },
+  "dependencies": {
+    "node-php-server": "^0.1.2"
+  }
+}
