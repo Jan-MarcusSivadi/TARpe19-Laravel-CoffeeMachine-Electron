@@ -203,6 +203,8 @@ TARpe19-Laravel-CoffeeMachine-Electron/
 │   │   │   └── public/ # Simple drink selection interface
 │   │   └── css/js/     # Frontend assets
 │   ├── routes/         # Coffee machine application routes
+│   │   ├── web.php     # Main application routes
+│   │   └── api.php     # API routes
 │   ├── .env.example    # Environment template
 │   ├── artisan         # Laravel command-line tool
 │   └── composer.json   # PHP dependencies
@@ -248,6 +250,28 @@ TARpe19-Laravel-CoffeeMachine-Electron/
    - **Inventory management:** Set max cups and refill functionality
    - **Public operations:** Display available drinks and handle dispensing
    - **Real-time updates:** Cup counts update immediately after dispensing
+
+## Application Routes
+
+The coffee machine application uses the following routes:
+
+### Public Routes
+- `GET /` - Homepage/Landing page
+- `GET /kohviautomaat` - Public coffee machine interface (drink selection)
+- `GET /kohviautomaat/{machine}/decrement` - Dispense one cup (decrements inventory)
+
+### Admin Routes
+- `GET /admin` - Admin dashboard view
+- `GET /admin/create` - Create new drink type form
+- `POST /admin/store` - Store new drink type
+- `GET /admin/{machine}/increment` - Refill cups (increments inventory)
+- `DELETE /admin/{machine}/delete` - Delete drink type
+
+### API Routes
+- `GET /api/user` - User information endpoint (requires authentication)
+
+**Route Parameters:**
+- `{machine}` - Refers to the drink/coffee machine ID for operations
 
 ## Troubleshooting
 
